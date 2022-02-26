@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "DuoHacker v3 - Lolo",
+  "version": "1.0.1",
+  "incognito": "split",
+  "description": "Finish courses and lessons super quick and thereby get a lot of XP in Duolingo.",
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [{
+    "matches": ["*://*.duolingo.com/*"],
+    "js": ["content.js"]
+  }],
+  "permissions": ["<all_urls>", "webRequest", "webRequestBlocking", "storage", "cookies", "activeTab", "tabs"],
+  "icons": {
+    "128": "128_128.png",
+    "48": "48_48.png",
+    "16": "16_16.png"
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "48_48.png",
+    "default_title": "DuoHacker v3 - Lolo"
+  }
+}
