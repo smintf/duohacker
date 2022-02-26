@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "DuoHacker v3 - Lolo",
+  "name": "DuoHacker",
   "version": "1.0.1",
   "incognito": "split",
   "description": "Finish courses and lessons super quick and thereby get a lot of XP in Duolingo.",
@@ -20,6 +20,6 @@
   "browser_action": {
     "default_popup": "popup.html",
     "default_icon": "48_48.png",
-    "default_title": "DuoHacker v3 - Lolo"
+    "default_title": "DuoHacker"
   }
 }
