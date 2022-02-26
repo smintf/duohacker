@@ -2,7 +2,7 @@
   <br>
   <a href="https://github.com/smintf/duohacker/">
   <br>
-  ach
+  duohacker
   <br>
 </h1>
 
