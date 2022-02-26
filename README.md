@@ -1,37 +1,42 @@
-## Welcome to GitHub Pages
+<h1 align="center">
+  <br>
+  <a href="https://github.com/smintf/duohacker/">
+  <br>
+  ach
+  <br>
+</h1>
 
-You can use the [editor on GitHub](https://github.com/smintf/Duohacker/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<h4 align="center">there's cheats for Duolingo? what</h4>
 
-### Markdown
+<p align="center">
+  <a href="https://unlicense.org/">
+    <img src="https://img.shields.io/badge/license-unlicense-black">
+  </a>
+  <a href="https://github.com/smintf/duohacker/releases">
+      <img src="https://img.shields.io/badge/version-v3-blue">
+  </a>
+  <a href="https://github.com/smintf/duohacker/">
+      <img src="https://img.shields.io/badge/status-works-success">
+  </a>
+</p>
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### What's this?
+A Hack for Duolingo that allows you to grind XP and Lingots really fast.
 
-```markdown
-Syntax highlighted code block
+### Usage
+1. Download the .zip on Releases
+2. Unpack the Archive to a folder (ex: duohack)
+3. Goto chrome://extensions
+4. Enable "Developer Mode" if you haven't already
+5. Press "Load Unpacked"
+6. Now Locate the folder where you extracted the Archive to and select it
 
-# Header 1
-## Header 2
-### Header 3
+### How to Enable/Disable Duohacker?
 
-- Bulleted
-- List
+Enable - Open Duolingo and Enable Duohacker by toggling the button. (You may have to restart chrome)
+Disable - Open Duolingo and Enable Duohacker by toggle the button back. (You may have to restart chrome)
 
-1. Numbered
-2. List
+### Disclaimer
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/smintf/Duohacker/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+I am not responsible for any misuse of this, in any shape or form.
