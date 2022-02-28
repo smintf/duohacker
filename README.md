@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/badge/license-MIT-black">
   </a>
   <a href="https://github.com/smintf/duohacker/releases">
-      <img src="https://img.shields.io/badge/version-v1.0-blue">
+      <img src="https://img.shields.io/badge/version-v1.0.1-blue">
   </a>
   <a href="https://github.com/smintf/duohacker/">
       <img src="https://img.shields.io/badge/status-works-success">
