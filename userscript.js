@@ -1,15 +1,19 @@
 // ==UserScript==
-// @name         Duohacker
-// @namespace    https://www.duolingo.com/
-// @version      1.0
-// @description  An autoanswer script for Duolingo.
-// @author       Smint
-// @match        https://www.duolingo.com/skill*
-// @match        https://www.duolingo.com/alphabet*
-// @match        https://www.duolingo.com/checkpoint*
-// @license      MIT
-// @grant        none
-// @run-at       document-end
+// @name              Duohacker
+// @namespace         https://www.duolingo.com/
+// @homepageURL       https://github.com/smintf/duohacker
+// @supportURL        https://github.com/smintf/duohacker/issues
+// @contributionURL   https://github.com/smintf/duohacker/pulls
+// @version           1.0
+// @description       An autoanswer script for Duolingo.
+// @author            smintf
+// @copyright         Smint
+// @match             https://www.duolingo.com/skill*
+// @match             https://www.duolingo.com/alphabet*
+// @match             https://www.duolingo.com/checkpoint*
+// @license           MIT
+// @grant             none
+// @run-at            document-end
 // ==/UserScript==
 
 const DEBUG = false;
