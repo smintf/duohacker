@@ -26,10 +26,10 @@ A Hack for Duolingo that allows you to grind XP and Lingots really fast.
 
 ### Usage
 
-1. Install the userscript from [Greasyfork](https://greasyfork.com)
-2. Enable it using your Userscript Manager.
-3. Go onto a Duolingo challenge page (www.duolingo.com/skill*)
-4. Refresh and watch the questions simply answer themselves
+1. Install the userscript from [Greasyfork](https://greasyfork.com) using [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/get-it/).
+2. Enable it in your Userscript Manager.
+3. Go onto a Duolingo challenge page (www.duolingo.com/skill*).
+4. Refresh and wallah!
 
 ### Known Bugs
 
