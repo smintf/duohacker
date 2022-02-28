@@ -10,7 +10,7 @@
 <h4 align="center">theres cheats for Duolingo? what</h4>
 
 <p align="center">
-  <a href="https://unlicense.org/">
+  <a href="https://github.com/smintf/duohacker/blob/main/LICENSE/">
     <img src="https://img.shields.io/badge/license-MIT-black">
   </a>
   <a href="https://github.com/smintf/duohacker/releases">
