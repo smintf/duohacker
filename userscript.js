@@ -19,7 +19,7 @@
 // @author smintf
 // ==/OpenUserJS==
 
-const DEBUG = false;
+const DEBUG = true;
 let mainInterval;
 const dataTestComponentClassName = 'e4VJZ';
 const TIME_OUT = 1000;
