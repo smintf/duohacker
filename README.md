@@ -22,7 +22,7 @@
 </p>
 
 ### What's this?
-An Autoanswer script for Duolingo that allows you to grind XP and Lingots.
+An Auto-Answer script for Duolingo that allows you to grind XP and Lingots.
 
 ### Usage
 
