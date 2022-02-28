@@ -34,7 +34,7 @@ A Hack for Duolingo that allows you to grind XP and Lingots really fast.
 ### Known Bugs
 
 1. Some Question Types don't get answered.
-2. When the Userscript is disabled, it still continues to answer questions. (workaround: refresh the page)
+2. When the Userscript is disabled, it still continues to answer questions (workaround: refresh the page).
 
 ### Disclaimer
 
