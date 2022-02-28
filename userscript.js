@@ -6,7 +6,7 @@
 // @contributionURL   https://github.com/smintf/duohacker/pulls
 // @version           1.0
 // @description       An autoanswer script for Duolingo.
-// @author            smintf
+// @author            Smint
 // @copyright         Smint
 // @match             https://www.duolingo.com/skill*
 // @match             https://www.duolingo.com/alphabet*
@@ -15,6 +15,10 @@
 // @grant             none
 // @run-at            document-end
 // ==/UserScript==
+
+// ==OpenUserJS==
+// @author smintf
+// ==/OpenUserJS==
 
 const DEBUG = false;
 let mainInterval;
