@@ -153,6 +153,7 @@ function classify() {
     if (DEBUG) console.log(`${challenge.type}`, challenge);
     switch (challenge.type) {
         case GAP_FILL_TYPE:
+        case SELECT_TYPE:
         case SELECT_PRONUNCIATION_TYPE:
         case READ_COMPREHENSION_TYPE:
         case LISTEN_COMPREHENSION_TYPE:
@@ -168,13 +169,6 @@ function classify() {
             const { choices, correctIndices } = challenge;
             if (DEBUG) console.log('TAP_COMPLETE_TYPE', { choices, correctIndices });
             return { choices, correctIndices };
-        }
-
-        case SELECT_TYPE: {
-            const { choices, correctIndex } = challenge;
-            if (DEBUG) console.log('SELECT_TYPE', { choices, correctIndex });
-            document.querySelectorAll(CHALLENGE_CHOICE_CARD)[correctIndex].dispatchEvent(clickEvent);
-            return { choices, correctIndex };
         }
 
         case MATCH_TYPE:
