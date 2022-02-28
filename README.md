@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="https://unlicense.org/">
-    <img src="https://img.shields.io/badge/license-unlicense-black">
+    <img src="https://img.shields.io/badge/license-MIT-black">
   </a>
   <a href="https://github.com/smintf/duohacker/releases">
       <img src="https://img.shields.io/badge/version-v1.0-blue">
@@ -22,11 +22,11 @@
 </p>
 
 ### What's this?
-A Hack for Duolingo that allows you to grind XP and Lingots really fast.
+An Autoanswer script for Duolingo that allows you to grind XP and Lingots.
 
 ### Usage
 
-1. Install the userscript from [Greasyfork](https://greasyfork.com) using [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/get-it/).
+1. Install the userscript from [Greasyfork](https://greasyfork.org/en/scripts/440703-duohacker) using [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/get-it/).
 2. Enable it in your Userscript Manager.
 3. Go onto a Duolingo challenge page (www.duolingo.com/skill*).
 4. Refresh and wallah!
