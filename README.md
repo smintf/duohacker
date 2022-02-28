@@ -6,7 +6,6 @@
   <br>
 </h1>
 
-
 <h4 align="center">theres cheats for Duolingo? what</h4>
 
 <p align="center">
@@ -22,6 +21,7 @@
 </p>
 
 ### What's this?
+
 An Auto-Answer script for Duolingo that allows you to grind XP and Lingots.
 
 ### Usage
