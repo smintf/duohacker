@@ -3,7 +3,6 @@
 // @namespace         https://www.duolingo.com/
 // @homepageURL       https://github.com/smintf/duohacker
 // @supportURL        https://github.com/smintf/duohacker/issues
-// @contributionURL   https://github.com/smintf/duohacker/pulls
 // @version           1.0.1
 // @description       An autoanswer script for Duolingo.
 // @author            Smint
