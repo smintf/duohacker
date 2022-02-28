@@ -319,7 +319,7 @@ function main() {
 // Calls main()
 function solveChallenge() {
     mainInterval = setInterval(main, TIME_OUT);
-// Logs command to stop the script
+// Logs command to stop the Userscript
     console.log(`to stop autoanswer run "clearInterval(${mainInterval})"`);
 }
 
