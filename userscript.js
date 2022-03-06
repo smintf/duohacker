@@ -3,13 +3,14 @@
 // @namespace         https://www.duolingo.com/
 // @homepageURL       https://github.com/smintf/duohacker
 // @supportURL        https://github.com/smintf/duohacker/issues
-// @version           1.0.1
+// @version           1.0.2
 // @description       An autoanswer script for Duolingo.
 // @author            Smint
 // @copyright         Smint
 // @match             https://www.duolingo.com/skill*
 // @match             https://www.duolingo.com/alphabet*
 // @match             https://www.duolingo.com/checkpoint*
+// @match             https://www.duolingo.com/stories*
 // @license           MIT
 // @grant             none
 // @run-at            document-end
@@ -64,8 +65,13 @@ const CHALLENGE_TEXT_INPUT = '[data-test="challenge-text-input"]';
 const CHALLENGE_TAP_TOKEN = '[data-test="challenge-tap-token"]';
 const PLAYER_NEXT = '[data-test="player-next"]';
 const PLAYER_SKIP = '[data-test="player-skip"]';
-const BLAME_INCORRECT = '[data-test="blame blame-incorrect"]';
+const AUDIO_BUTTON = '[data-test="audio-button"]';
+const WORD_BANK = '[data-test="word-bank"]';
+const BLAME_INCORRECT = '[data-test="blame-incorrect"]';
 const CHARACTER_MATCH = '[data-test="challenge challenge-characterMatch"]';
+const STORIES_PLAYER_NEXT = '[data-test="stories-player-continue"]';
+const STORIES_CHOICE = '[data-test="stories-choice"]';
+const STORIES_ELEMENT = '[data-test="stories-element"]';
 
 
 // Mouse Click
@@ -120,17 +126,25 @@ function getChallenge() {
     }
 }
 
-// Calls clickEvent()
+// pressEnter() function
 function pressEnter() {
-const clickEvent = new MouseEvent("click", {
-"view": window,
-"bubbles": true,
-"cancelable": false
-});
+    const clickEvent = new MouseEvent("click", {
+    "view": window,
+    "bubbles": true,
+    "cancelable": false
+    });
+    document.querySelector('button[data-test="player-next"]').dispatchEvent(clickEvent);
+    }
 
-// Press the Next/Continue button automatically
-document.querySelector('button[data-test="player-next"]').dispatchEvent(clickEvent);
-}
+// pressEnter() function but for stories
+function pressEnterStories() {
+    const clickEvent = new MouseEvent("click", {
+    "view": window,
+    "bubbles": true,
+    "cancelable": false
+    });
+    document.querySelector('button[data-test="stories-player-continue"]').dispatchEvent(clickEvent);
+    }
 
 function dynamicInput(element, msg) {
     let input = element;
@@ -187,7 +201,7 @@ function classify() {
 
         case TRANSLATE_TYPE: {
             const { correctTokens, correctSolutions } = challenge;
-            if (DEBUG) console.log('TRANSLATE_TYPE', { correctTokens });
+            if (DEBUG) console.log('TRANSLATE_TYPE', { correctTokens, correctSolutions });
             if (correctTokens) {
                 const tokens = document.querySelectorAll(CHALLENGE_TAP_TOKEN);
                 let ignoreTokeIndexes = [];
@@ -300,7 +314,7 @@ function main() {
         let isPlayerNext = document.querySelectorAll(PLAYER_NEXT)[0].textContent.toUpperCase();
         if (isPlayerNext.valueOf() !== 'CONTINUE') {
             classify();
-            breakWhenIncorrect()
+            breakWhenIncorrect();
             pressEnter();
         }
         setTimeout(pressEnter, 150);
@@ -309,10 +323,32 @@ function main() {
     }
 }
 
+// Stories Function
+function stories() {
+    try {
+        let isPlayerNext = document.querySelectorAll(STORIES_PLAYER_NEXT)[0].textContent.toUpperCase();
+        if (isPlayerNext.valueOf() !== 'CONTINUE') {
+            classify();
+            pressEnterStories();
+        }
+        setTimeout(pressEnterStories, 50);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 // Calls main()
 function solveChallenge() {
-    mainInterval = setInterval(main, TIME_OUT);
-// Logs command to stop the Userscript
+    // Check if its a Skill / Alphabet / Checkpoint URL
+    if (/[sac][klh][ipe][lhc][lak]/ig.test(window.location.href) == true) {
+        if (DEBUG) console.log('Skill URL Detected');
+        mainInterval = setInterval(main, TIME_OUT);
+    }
+    // Check if its a Stories URL
+    if (/stories/ig.test(window.location.href) == true) {
+        if (DEBUG) console.log('Stories URL Detected');
+        mainInterval = setInterval(stories, TIME_OUT);
+    }
     console.log(`to stop the script run "clearInterval(${mainInterval})"`);
 }
 
