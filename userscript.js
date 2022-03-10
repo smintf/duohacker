@@ -3,7 +3,7 @@
 // @namespace         https://www.duolingo.com/
 // @homepageURL       https://github.com/smintf/duohacker
 // @supportURL        https://github.com/smintf/duohacker/issues
-// @version           1.0.2
+// @version           1.0.3
 // @description       An autoanswer script for Duolingo.
 // @author            Smint <smintoverflow@gmail.com>
 // @copyright         Smint
@@ -180,23 +180,36 @@ function classify() {
 
         case TAP_COMPLETE_TYPE: {
             const { choices, correctIndices } = challenge;
-            const tokens = document.querySelectorAll(CHALLENGE_TAP_TOKEN);
-            if (DEBUG) console.log('TAP_COMPLETE_TYPE', { choices, correctIndices });
-            pairs.forEach((pair) => {
-                for(let i = 0; i < correctIndices.length; i++) {
-                    console.log('Value of CorrectIndices[', i , ']',  correctIndices[i]);
-                    
-                    tokens[i].dispatchEvent(clickEvent);
-                }
+            const tokens = document.querySelectorAll(WORD_BANK);
+            if (DEBUG) console.log('TAP_COMPLETE_TYPE', { choices, correctIndices, tokens });
+            correctIndices.forEach((index) => {
+                for(let x = 0; x < correctIndices.length; x++) {
+                    console.log('Value of CorrectIndices[', x , ']',  correctIndices[i]);
+                    let hmm = correctIndices[x]
+                    tokens[hmm].dispatchEvent(clickEvent);
+                }                
             })
             return { choices, correctIndices };
         }
 
         case MATCH_TYPE:
+        {
+            const { pairs } = challenge;
+            const tokens = document.querySelectorAll(CHALLENGE_TAP_TOKEN);
+            if (DEBUG) console.log('CHARACTER_MATCH_TYPE', { tokens, pairs });
+            pairs.forEach((pair) => {
+                for(let i = 0; i < tokens.length; i++) {
+                    if(tokens[i].innerText === pair.fromToken || tokens[i].innerText === pair.learningToken) {
+                        tokens[i].dispatchEvent(clickEvent);
+                    }
+                }
+            })
+            return { pairs };
+        }
         case CHARACTER_MATCH_TYPE: {
             const { pairs } = challenge;
             const tokens = document.querySelectorAll(CHALLENGE_TAP_TOKEN);
-            if (DEBUG) console.log('CHARACTER_MATCH_TYPE', { tokens });
+            if (DEBUG) console.log('CHARACTER_MATCH_TYPE', { tokens, pairs });
             pairs.forEach((pair) => {
                 for(let i = 0; i < tokens.length; i++) {
                     if(tokens[i].innerText === pair.transliteration || tokens[i].innerText === pair.character) {
