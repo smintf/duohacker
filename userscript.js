@@ -180,7 +180,15 @@ function classify() {
 
         case TAP_COMPLETE_TYPE: {
             const { choices, correctIndices } = challenge;
+            const tokens = document.querySelectorAll(CHALLENGE_TAP_TOKEN);
             if (DEBUG) console.log('TAP_COMPLETE_TYPE', { choices, correctIndices });
+            pairs.forEach((pair) => {
+                for(let i = 0; i < correctIndices.length; i++) {
+                    console.log('Value of CorrectIndices[', i , ']',  correctIndices[i]);
+                    
+                    tokens[i].dispatchEvent(clickEvent);
+                }
+            })
             return { choices, correctIndices };
         }
 
