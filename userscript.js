@@ -146,6 +146,7 @@ function pressEnterStories() {
     document.querySelector('button[data-test="stories-player-continue"]').dispatchEvent(clickEvent);
     }
 
+// dynamicInput() function
 function dynamicInput(element, msg) {
     let input = element;
     let lastValue = input.value;
@@ -182,18 +183,10 @@ function classify() {
             const { choices, correctIndices } = challenge;
             const tokens = document.querySelectorAll(WORD_BANK);
             if (DEBUG) console.log('TAP_COMPLETE_TYPE', { choices, correctIndices, tokens });
-            correctIndices.forEach((index) => {
-                for(let x = 0; x < correctIndices.length; x++) {
-                    console.log('Value of CorrectIndices[', x , ']',  correctIndices[i]);
-                    let hmm = correctIndices[x]
-                    tokens[hmm].dispatchEvent(clickEvent);
-                }                
-            })
             return { choices, correctIndices };
         }
 
-        case MATCH_TYPE:
-        {
+        case MATCH_TYPE: {
             const { pairs } = challenge;
             const tokens = document.querySelectorAll(CHALLENGE_TAP_TOKEN);
             if (DEBUG) console.log('CHARACTER_MATCH_TYPE', { tokens, pairs });
@@ -242,17 +235,40 @@ function classify() {
                 let textInputElement = document.querySelectorAll(CHALLENGE_TRANSLATE_INPUT)[0];
                 dynamicInput(textInputElement, correctSolutions[0]);
             }
-
             return { correctTokens };
         }
 
         case NAME_TYPE: {
-            const { correctSolutions } = challenge;
-            if (DEBUG) console.log('NAME_TYPE', { correctSolutions });
+            const { correctSolutions, articles } = challenge;
+            if (DEBUG) console.log('NAME_TYPE', { correctSolutions, articles });
+            const regexFrom = (articles, flags) =>
+                new RegExp(
+                  articles
+                    .map(s => s.replace(/[()[\]{}*+?^$|#.,\/\\\s-]/g, "\\$&"))
+                   .sort((a, b) => b.length - a.length)
+                    .join("|"),
+                  flags
+            );
             let textInputElement = document.querySelectorAll(CHALLENGE_TEXT_INPUT)[0];
-            let correctSolution = correctSolutions[0];
-            dynamicInput(textInputElement, correctSolution);
-            return { correctSolutions };
+            let articleChoiceElement = document.querySelectorAll(CHALLENGE_JUDGE_TEXT);
+            let string = correctSolutions[0];
+            const pattern = regexFrom(articles, "i");
+            console.log(string)
+            let result; while (result = pattern.exec(string)) {
+                let x = string.replace(result[0],'');
+                let correctSolution = x.trim()
+                console.log(correctSolution)
+                dynamicInput(textInputElement, correctSolution);
+                for(let i = 0; i < articles.length; i++) {
+                    if(articles[i] === result) {
+                    console.log(result)
+                    articleChoiceElement[i].dispatchEvent(clickEvent);
+                    document.querySelectorAll(CHALLENGE_CHOICE)[i].dispatchEvent(clickEvent)
+                    document.querySelectorAll(CHALLENGE_CHOICE)[result].dispatchEvent(clickEvent)
+                }
+            }
+            return { correctSolutions, articles };
+            }
         }
 
         case COMPLETE_REVERSE_TRANSLATION_TYPE: {
