@@ -3,17 +3,18 @@
 // @namespace         https://www.duolingo.com/
 // @homepageURL       https://github.com/smintf/duohacker
 // @supportURL        https://github.com/smintf/duohacker/issues
-// @version           1.0.3
-// @description       An autoanswer script for Duolingo.
+// @version           1.0.4
+// @description     An autoanswer script for Duolingo.
 // @author            Smint <smintoverflow@gmail.com>
-// @copyright         Smint
-// @match             https://www.duolingo.com/skill*
-// @match             https://www.duolingo.com/alphabet*
-// @match             https://www.duolingo.com/checkpoint*
-// @match             https://www.duolingo.com/stories*
+// @copyright       Smint
+// @match            https://www.duolingo.com/skill*
+// @match            https://www.duolingo.com/alphabet*
+// @match            https://www.duolingo.com/checkpoint*
+// @match            https://www.duolingo.com/stories*
+// @match            https://www.duolingo.com/practice*
 // @license           MIT
 // @grant             none
-// @run-at            document-end
+// @run-at           document-end
 // ==/UserScript==
 
 // ==OpenUserJS==
