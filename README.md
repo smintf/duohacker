@@ -6,7 +6,7 @@
   <br>
 </h1>
 
-<h4 align="center">theres cheats for Duolingo? what</h4>
+<h4 align="center">there's cheats for Duolingo? what</h4>
 
 <p align="center">
   <a href="https://github.com/smintf/duohacker/blob/main/LICENSE/">
@@ -38,4 +38,4 @@ An Auto-Answer script for Duolingo that allows you to grind XP and Lingots.
 
 ### Disclaimer
 
-I am not responsible for any misuse of this, in any shape or form.
+I am not responsible for any misuse of this, in any shape or form. This was made entirely for educational purposes.
