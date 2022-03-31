@@ -1,19 +1,19 @@
 // ==UserScript==
-// @name              Duohacker
-// @namespace         https://www.duolingo.com/
-// @homepageURL       https://github.com/smintf/duohacker
-// @supportURL        https://github.com/smintf/duohacker/issues
-// @version           1.0.5
-// @description     An autoanswer script for Duolingo.
-// @author            Smint <smintoverflow@gmail.com>
-// @copyright       Smint
+// @name             Duohacker
+// @namespace        https://www.duolingo.com/
+// @homepageURL      https://github.com/smintf/duohacker
+// @supportURL       https://github.com/smintf/duohacker/issues
+// @version          1.0.5
+// @description      An autoanswer script for Duolingo.
+// @author           Smint <smintoverflow@gmail.com>
+// @copyright        Smint
 // @match            https://www.duolingo.com/skill*
 // @match            https://www.duolingo.com/alphabet*
 // @match            https://www.duolingo.com/checkpoint*
 // @match            https://www.duolingo.com/stories*
 // @match            https://www.duolingo.com/practice*
-// @license           MIT
-// @grant             none
+// @license          MIT
+// @grant            none
 // @run-at           document-end
 // ==/UserScript==
 
@@ -21,7 +21,7 @@
 // @author smintf
 // ==/OpenUserJS==
 
-const DEBUG = true;
+const DEBUG = false;
 let mainInterval;
 const dataTestComponentClassName = "e4VJZ";
 const TIME_OUT = 1000;
@@ -380,7 +380,7 @@ function classify() {
   }
 }
 
-// Stops the userscript when an answer is incorrect
+// Stops when an answer is incorrect
 function breakWhenIncorrect() {
   const isBreak = document.querySelectorAll(BLAME_INCORRECT).length > 0;
   if (isBreak) {
