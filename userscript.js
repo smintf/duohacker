@@ -3,7 +3,7 @@
 // @namespace         https://www.duolingo.com/
 // @homepageURL       https://github.com/smintf/duohacker
 // @supportURL        https://github.com/smintf/duohacker/issues
-// @version           1.0.4
+// @version           1.0.5
 // @description     An autoanswer script for Duolingo.
 // @author            Smint <smintoverflow@gmail.com>
 // @copyright       Smint
@@ -183,11 +183,11 @@ function classify() {
     case CHARACTER_SELECT_TYPE:
     case FORM_TYPE: {
       const { choices, correctIndex } = challenge;
-      if (DEBUG)
+      if (DEBUG) {
         console.log(
           "READ_COMPREHENSION, LISTEN_COMPREHENSION, CHARACTER_SELECT_TYPE, GAP_FILL_TYPE, SELECT_PRONUNCIATION_TYPE",
           { choices, correctIndex }
-        );
+        );}
       document
         .querySelectorAll(CHALLENGE_CHOICE)
         [correctIndex].dispatchEvent(clickEvent);
@@ -197,15 +197,14 @@ function classify() {
     case TAP_COMPLETE_TYPE: {
       const { choices, correctIndices } = challenge;
       const tokens = document.querySelectorAll(WORD_BANK);
-      if (DEBUG)
-        console.log("TAP_COMPLETE_TYPE", { choices, correctIndices, tokens });
+      if (DEBUG) {console.log("TAP_COMPLETE_TYPE", { choices, correctIndices, tokens });}
       return { choices, correctIndices };
     }
 
     case MATCH_TYPE: {
       const { pairs } = challenge;
       const tokens = document.querySelectorAll(CHALLENGE_TAP_TOKEN);
-      if (DEBUG) console.log("CHARACTER_MATCH_TYPE", { tokens, pairs });
+      if (DEBUG) {console.log("CHARACTER_MATCH_TYPE", { tokens, pairs });}
       pairs.forEach((pair) => {
         for (let i = 0; i < tokens.length; i++) {
           if (
@@ -221,7 +220,7 @@ function classify() {
     case CHARACTER_MATCH_TYPE: {
       const { pairs } = challenge;
       const tokens = document.querySelectorAll(CHALLENGE_TAP_TOKEN);
-      if (DEBUG) console.log("CHARACTER_MATCH_TYPE", { tokens, pairs });
+      if (DEBUG) {console.log("CHARACTER_MATCH_TYPE", { tokens, pairs });}
       pairs.forEach((pair) => {
         for (let i = 0; i < tokens.length; i++) {
           if (
@@ -237,8 +236,7 @@ function classify() {
 
     case TRANSLATE_TYPE: {
       const { correctTokens, correctSolutions } = challenge;
-      if (DEBUG)
-        console.log("TRANSLATE_TYPE", { correctTokens, correctSolutions });
+      if (DEBUG) {console.log("TRANSLATE_TYPE", { correctTokens, correctSolutions });}
       if (correctTokens) {
         const tokens = document.querySelectorAll(CHALLENGE_TAP_TOKEN);
         let ignoreTokeIndexes = [];
@@ -268,7 +266,7 @@ function classify() {
 
     case NAME_TYPE: {
       const { correctSolutions, articles } = challenge;
-      if (DEBUG) console.log("NAME_TYPE", { correctSolutions, articles });
+      if (DEBUG) {console.log("NAME_TYPE", { correctSolutions, articles });}
       const regexFrom = (articles, flags) =>
         new RegExp(
           articles
@@ -307,8 +305,7 @@ function classify() {
 
     case COMPLETE_REVERSE_TRANSLATION_TYPE: {
       const { displayTokens } = challenge;
-      if (DEBUG)
-        console.log("COMPLETE_REVERSE_TRANLATION_TYPE", { displayTokens });
+      if (DEBUG) {console.log("COMPLETE_REVERSE_TRANLATION_TYPE", { displayTokens });}
       const { text } = displayTokens.filter((token) => token.isBlank)[0];
       let textInputElement = document.querySelectorAll(CHALLENGE_TEXT_INPUT)[0];
       dynamicInput(textInputElement, text);
@@ -317,7 +314,7 @@ function classify() {
 
     case LISTEN_TAP_TYPE: {
       const { correctTokens } = challenge;
-      if (DEBUG) console.log("LISTEN_TAP_TYPE", { correctTokens });
+      if (DEBUG) {console.log("LISTEN_TAP_TYPE", { correctTokens });}
       const tokens = document.querySelectorAll(CHALLENGE_TAP_TOKEN);
       for (let wordIndex in correctTokens) {
         tokens.forEach((token) => {
@@ -331,7 +328,7 @@ function classify() {
 
     case LISTEN_TYPE: {
       const { prompt } = challenge;
-      if (DEBUG) console.log("LISTEN_TYPE", { prompt });
+      if (DEBUG) {console.log("LISTEN_TYPE", { prompt });}
       let textInputElement = document.querySelectorAll(
         CHALLENGE_TRANSLATE_INPUT
       )[0];
@@ -341,7 +338,7 @@ function classify() {
 
     case JUDGE_TYPE: {
       const { correctIndices } = challenge;
-      if (DEBUG) console.log("JUDGE_TYPE", { correctIndices });
+      if (DEBUG) {console.log("JUDGE_TYPE", { correctIndices });}
       document
         .querySelectorAll(CHALLENGE_JUDGE_TEXT)
         [correctIndices[0]].dispatchEvent(clickEvent);
@@ -352,10 +349,10 @@ function classify() {
     case CHARACTER_INTRO_TYPE: {
       const { choices, correctIndex } = challenge;
       if (DEBUG)
-        console.log("CHARACTER_INTRO_TYPE, DIALOGUE_TYPE", {
+        {console.log("CHARACTER_INTRO_TYPE, DIALOGUE_TYPE", {
           choices,
           correctIndex,
-        });
+        });}
       document
         .querySelectorAll(CHALLENGE_JUDGE_TEXT)
         [correctIndex].dispatchEvent(clickEvent);
@@ -364,8 +361,7 @@ function classify() {
 
     case SELECT_TRANSCRIPTION_TYPE: {
       const { choices, correctIndex } = challenge;
-      if (DEBUG)
-        console.log("SELECT_TRANSCRIPTION_TYPE", { choices, correctIndex });
+      if (DEBUG) {console.log("SELECT_TRANSCRIPTION_TYPE", { choices, correctIndex });}
       document
         .querySelectorAll(CHALLENGE_JUDGE_TEXT)
         [correctIndex].dispatchEvent(clickEvent);
@@ -374,7 +370,7 @@ function classify() {
 
     case SPEAK_TYPE: {
       const { prompt } = challenge;
-      if (DEBUG) console.log("SPEAK_TYPE", { prompt });
+      if (DEBUG) {console.log("SPEAK_TYPE", { prompt });}
       document.querySelectorAll(PLAYER_SKIP)[0].dispatchEvent(clickEvent);
       return { prompt };
     }
@@ -430,12 +426,12 @@ function stories() {
 function solveChallenge() {
   // Check if its a Skill / Alphabet / Checkpoint URL
   if (/[sac][klh][ipe][lhc][lak]/gi.test(window.location.href) == true) {
-    if (DEBUG) console.log("Skill URL Detected");
+    if (DEBUG) {console.log("Skill URL Detected");}
     mainInterval = setInterval(main, TIME_OUT);
   }
   // Check if its a Stories URL
   if (/stories/gi.test(window.location.href) == true) {
-    if (DEBUG) console.log("Stories URL Detected");
+    if (DEBUG) {console.log("Stories URL Detected");}
     mainInterval = setInterval(stories, TIME_OUT);
   }
   console.log(`to stop the script run "clearInterval(${mainInterval})"`);
