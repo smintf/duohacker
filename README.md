@@ -18,6 +18,9 @@
   <a href="https://github.com/smintf/duohacker/">
       <img src="https://img.shields.io/badge/status-works-success">
   </a>
+  <a href="https://opensource.org/">
+      <img src="https://img.shields.io/badge/Open%20Source-true-brightgreen">
+  </a>
 </p>
 
 ### What's this?
