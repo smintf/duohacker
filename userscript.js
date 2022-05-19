@@ -437,5 +437,4 @@ function solveChallenge() {
   console.log(`to stop the script run "clearInterval(${mainInterval})"`);
 }
 
-solveChallenge();
-1;
+(solveChallenge)();
