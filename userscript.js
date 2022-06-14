@@ -44,6 +44,7 @@ const DIALOGUE_TYPE = "dialogue";
 const SELECT_TRANSCRIPTION_TYPE = "selectTranscription";
 const SPEAK_TYPE = "speak";
 const SELECT_PRONUNCIATION_TYPE = "selectPronunciation";
+const LISTEN_ISOLATION_TYPE = "listenIsolation";
 
 // W.I.P
 const ASSIST_TYPE = "assist";
@@ -199,6 +200,18 @@ function classify() {
       const tokens = document.querySelectorAll(WORD_BANK);
       if (DEBUG) {console.log("TAP_COMPLETE_TYPE", { choices, correctIndices, tokens });}
       return { choices, correctIndices };
+    }
+
+    case LISTEN_ISOLATION_TYPE: {
+      const { correctIndex } = challenge;
+      const tokens = document.querySelectorAll(CHALLENGE_CHOICE);
+      if (DEBUG) {console.log("LISTEN_ISOLATION_TYPE", { correctIndex, tokens });}
+      tokens.forEach((e, i) => {
+        if(i == correctIndex) {
+          e.dispatchEvent(clickEvent);
+        }
+      });
+      return { correctIndex };
     }
 
     case MATCH_TYPE: {
