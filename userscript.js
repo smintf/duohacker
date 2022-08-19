@@ -21,7 +21,8 @@
 // @author smintf
 // ==/OpenUserJS==
 
-const DEBUG = false;
+
+const DEBUG = true;
 let mainInterval;
 const dataTestComponentClassName = "e4VJZ";
 const TIME_OUT = 1000;
@@ -65,6 +66,7 @@ const CHALLENGE_LISTEN_TAP = '[data-test="challenge-listenTap"]';
 const CHALLENGE_JUDGE_TEXT = '[data-test="challenge-judge-text"]';
 const CHALLENGE_TEXT_INPUT = '[data-test="challenge-text-input"]';
 const CHALLENGE_TAP_TOKEN = '[data-test="challenge-tap-token"]';
+const CHALLENGE_TAP_TOKEN_TEXT = '[data-test="challenge-tap-token-text"]';
 const PLAYER_NEXT = '[data-test="player-next"]';
 const PLAYER_SKIP = '[data-test="player-skip"]';
 const AUDIO_BUTTON = '[data-test="audio-button"]';
@@ -216,7 +218,7 @@ function classify() {
 
     case MATCH_TYPE: {
       const { pairs } = challenge;
-      const tokens = document.querySelectorAll(CHALLENGE_TAP_TOKEN);
+      const tokens = document.querySelectorAll(CHALLENGE_TAP_TOKEN_TEXT);
       if (DEBUG) {console.log("CHARACTER_MATCH_TYPE", { tokens, pairs });}
       pairs.forEach((pair) => {
         for (let i = 0; i < tokens.length; i++) {
@@ -230,6 +232,7 @@ function classify() {
       });
       return { pairs };
     }
+
     case CHARACTER_MATCH_TYPE: {
       const { pairs } = challenge;
       const tokens = document.querySelectorAll(CHALLENGE_TAP_TOKEN);
@@ -260,10 +263,11 @@ function classify() {
             if (token.innerText === correctTokens[correctTokenIndex]) {
               token.dispatchEvent(clickEvent);
               ignoreTokeIndexes.push(tokenIndex);
-              if (DEBUG)
+              if (DEBUG) {
                 console.log(
                   `correctTokenIndex [${correctTokens[correctTokenIndex]}] - tokenIndex [${token.innerText}]`
                 );
+              }
               break;
             }
           }
@@ -314,6 +318,7 @@ function classify() {
         }
         return { correctSolutions, articles };
       }
+      break;
     }
 
     case COMPLETE_REVERSE_TRANSLATION_TYPE: {
@@ -386,6 +391,15 @@ function classify() {
       if (DEBUG) {console.log("SPEAK_TYPE", { prompt });}
       document.querySelectorAll(PLAYER_SKIP)[0].dispatchEvent(clickEvent);
       return { prompt };
+    }
+
+    case ASSIST_TYPE: {
+      const { choices, correctIndex } = challenge;
+      if (DEBUG) {console.log("ASSIST_TYPE", { choices, correctIndex });}
+      document
+        .querySelectorAll(CHALLENGE_JUDGE_TEXT)
+        [correctIndex].dispatchEvent(clickEvent);
+      return { choices, correctIndex };
     }
 
     default:
